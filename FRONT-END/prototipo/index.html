@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WegOne - Sistema de Orientações</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function mostrarSecao(id) {
+      document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+      document.getElementById(id).style.display = "block";
+    }
+
+    window.onload = () => {
+      mostrarSecao('inicio'); // mostra a tela inicial por padrão
+    };
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <img src="logoWeg.png" alt="Logo da WEG" class="logo" />
+    <h1>WegOne</h1>
+    <select id="language">
+      <option value="pt">Português</option>
+      <option value="en">Inglês</option>
+      <option value="de">Alemão</option>
+    </select>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#" onclick="mostrarSecao('inicio')">Início</a></li>
+    <li><a href="#" onclick="mostrarSecao('cadastro')">Cadastrar</a></li>
+    <li><a href="#">Pesquisar</a></li>
+    <li><a href="#">Editar</a></li>
+    <li><a href="#">Excluir</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="inicio">
+    <h2>Bem-vindo ao Sistema WegOne</h2>
+    <p>Escolha uma opção no menu acima para começar.</p>
+  </section>
+
+  <section id="cadastro" style="display: none">
+    <h2>Cadastrar Nova Orientação</h2>
+    <form>
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" placeholder="Ex: Procedimento para motores" />
+
+      <label for="tipo">Tipo:</label>
+      <select id="tipo" name="tipo">
+        <option>Manual de Operação</option>
+        <option>Procedimento de Segurança</option>
+        <option>Manutenção e Reparos</option>
+        <option>Testes e Diagnóstico</option>
+        <option>Manual de Conduta e Operações Setoriais</option>
+      </select>
+
+      <label for="conteudo">Conteúdo:</label>
+      <textarea id="conteudo" name="conteudo"></textarea>
+
+      <button type="submit">Cadastrar</button>
+</main>
+
+</body>
+</html>
