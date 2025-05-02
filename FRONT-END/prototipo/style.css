@@ -23,7 +23,7 @@ header {
 }
 
 .logo {
-  height: 50px;
+  height: 220px;
 }
 
 header h1 {
@@ -181,4 +181,20 @@ button[type="button"]:hover {
 #resultado-pesquisa h3 {
   margin-top: 0;
   color: #005baa;
+}
+
+/* Link no título WegOne */
+header h1 a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+header h1 a:hover {
+  color: #a3d3ff;
+}
+
+/* Para o logo não colar no texto */
+.header-container a img.logo {
+  display: block;
 }
