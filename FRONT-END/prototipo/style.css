@@ -37,6 +37,13 @@ header {
   width: 70px;
 }
 
+.perfil {
+  display: block;
+  margin-left: center;
+  margin-right: center;
+  height: 50px;
+}
+
 header h1 {
   margin: 0;
   font-size: 26px;
