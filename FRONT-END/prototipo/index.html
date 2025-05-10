@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="iconweg.ico" type="image/x-icon">
   <title>WegOne - Sistema de Orientações</title>
   <link rel="stylesheet" href="style.css" />
+
   <script>
     function mostrarSecao(id) {
       document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
@@ -30,6 +31,9 @@
 
     function loginUsuario() {
       mostrarTela('app');
+      document.getElementById("login-usuario").value = "";
+      document.getElementById("login-cadastroId").value = "";
+      document.getElementById("login-senha").value = "";
     }
 
     function abrirCadastro() {
@@ -38,6 +42,15 @@
 
     function cadastrarUsuario() {
       mostrarTela('app');
+      document.getElementById("cad-nome").value = "";
+      document.getElementById("cad-cadastro").value = "";
+      document.getElementById("cad-email").value = "";
+      document.getElementById("cad-senha").value = "";
+      document.getElementById("cad-confirmar").value = "";
+    }
+
+    function abrirLogin() {
+      mostrarTela('login-cadastro');
     }
 
     function solicitarSenha(acao, evento, callback) {
@@ -53,20 +66,27 @@
 
     function realizarCadastro(event) {
       solicitarSenha("Cadastrar", event, () => {
-        // Aqui entraria o código de cadastro real
         alert("Cadastro realizado!");
+        document.getElementById("titulo").value = "";
+        document.getElementById("tipo").selectedIndex = 0;
+        document.getElementById("conteudo").value = "";
       });
     }
 
     function realizarEdicao(event) {
       solicitarSenha("Editar", event, () => {
         alert("Edição realizada!");
+        document.getElementById("id-editar").value = "";
+        document.getElementById("titulo-editar").value = "";
+        document.getElementById("tipo-editar").selectedIndex = 0;
+        document.getElementById("conteudo-editar").value = "";
       });
     }
 
     function realizarExclusao(event) {
       solicitarSenha("Excluir", event, () => {
         alert("Exclusão realizada!");
+        document.getElementById("id-excluir").value = "";
       });
     }
 
@@ -84,6 +104,17 @@
           <p><strong>Tipo:</strong> Manual de Operação</p>
           <p><strong>Conteúdo:</strong> Exemplo de conteúdo da orientação pesquisada.</p>
         `;
+        document.getElementById("pesquisa").value = "";
+      }
+    }
+
+    function toggleMenu() {
+      document.getElementById("menu-perfil").classList.toggle("show");
+    }
+
+    function confirmarSaida() {
+      if (confirm("Deseja realmente sair da conta?")) {
+        mostrarTela('login');
       }
     }
 
@@ -91,155 +122,162 @@
       mostrarTela('login');
     };
   </script>
+  
 </head>
 
 <body>
-<!-- TELA DE LOGIN -->
-<div id="login-cadastro" class="login-box">
-  <form class="form-box" onsubmit="loginUsuario(); return false;">
-    <img src="logoWegAzul2.png" alt="Logo da WEG" class="logo" />
-    <h2>Bem-vindo ao WegOne</h2>
+  <!-- Login -->
+  <div id="login-cadastro" class="login-box">
+    <form class="form-box" onsubmit="loginUsuario(); return false;">
+      <img src="logoWegAzul2.png" alt="Logo da WEG" class="logo2" />
+      <h2>Bem-vindo ao WegOne</h2>
+      <input type="text" id="login-usuario" placeholder="Usuário" required>
+      <input type="text" id="login-cadastroId" placeholder="Cadastro" required>
+      <input type="password" id="login-senha" placeholder="Senha" required>
+      <button id="botao-login" type="submit">Entrar</button>
+      <p>Não tem uma conta? <a href="#" onclick="abrirCadastro()">Cadastre-se</a></p>
+    </form>
+  </div>
 
-    <input type="text" id="login-usuario" placeholder="Usuário" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('login-cadastroId').focus();}">
+  <!-- Cadastro -->
+  <div id="cadastro-box" class="login-box" style="display: none;">
+    <form class="form-box" onsubmit="cadastrarUsuario(); return false;">
+      <img src="logoWegAzul2.png" alt="Logo da WEG" class="logo2" />
+      <h2>Cadastro de Usuário</h2>
+      <input type="text" id="cad-nome" placeholder="Nome" required>
+      <input type="text" id="cad-cadastro" placeholder="Cadastro" required>
+      <input type="email" id="cad-email" placeholder="Email" required>
+      <input type="password" id="cad-senha" placeholder="Senha" required>
+      <input type="password" id="cad-confirmar" placeholder="Confirmar Senha" required>
+      <button id="botao-cadastro" type="submit">Cadastrar</button>
+      <p>Já tem uma conta? <a href="#" onclick="abrirLogin()">Faça Login</a></p>
+    </form>
+  </div>
 
-    <input type="text" id="login-cadastroId" placeholder="Cadastro" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('login-senha').focus();}">
-
-    <input type="password" id="login-senha" placeholder="Senha" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('botao-login').click();}">
-
-    <button id="botao-login" type="submit">Entrar</button>
-
-    <p>Não tem uma conta? <a href="#" onclick="abrirCadastro()">Cadastre-se</a></p>
-  </form>
-</div>
-
-<!-- TELA DE CADASTRO -->
-<div id="cadastro-box" class="login-box" style="display: none;">
-  <form class="form-box" onsubmit="cadastrarUsuario(); return false;">
-    <h2>Cadastro de Usuário</h2>
-
-    <input type="text" id="cad-nome" placeholder="Nome" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('cad-cadastro').focus();}">
-
-    <input type="text" id="cad-cadastro" placeholder="Cadastro" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('cad-email').focus();}">
-
-    <input type="email" id="cad-email" placeholder="Email" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('cad-senha').focus();}">
-
-    <input type="password" id="cad-senha" placeholder="Senha" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('cad-confirmar').focus();}">
-
-    <input type="password" id="cad-confirmar" placeholder="Confirmar Senha" required
-      onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('botao-cadastro').click();}">
-
-    <button id="botao-cadastro" type="submit">Cadastrar</button>
-  </form>
-</div>
-
-<!-- CONTEÚDO PRINCIPAL -->
-<div id="conteudo" style="display: none;">
-  <header>
-    <div class="header-container">
-      <a href="#" onclick="mostrarSecao('inicio')">
-        <img src="logoWeg.png" alt="Logo da WEG" class="logo" />
-      </a>
-      <h1><a href="#" onclick="mostrarSecao('inicio')">WegOne</a></h1>
-      <select id="language">
-        <option value="pt">Português</option>
-        <option value="en">Inglês</option>
-        <option value="de">Alemão</option>
-        <option value="es">Espanhol</option>
-        <option value="zh-CN">Mandarim</option>
-      </select>
-    </div>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="#" onclick="mostrarSecao('inicio')">Início</a></li>
-      <li><a href="#" onclick="mostrarSecao('cadastro')">Cadastrar</a></li>
-      <li><a href="#" onclick="mostrarSecao('pesquisar')">Pesquisar</a></li>
-      <li><a href="#" onclick="mostrarSecao('editar')">Editar</a></li>
-      <li><a href="#" onclick="mostrarSecao('excluir')">Excluir</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <section id="inicio">
-      <h2>Bem-vindo ao Sistema WegOne</h2>
-      <p>Escolha uma opção no menu acima para começar.</p>
-    </section>
-
-    <section id="cadastro" style="display: none">
-      <h2>Cadastrar Nova Orientação</h2>
-      <form onsubmit="realizarCadastro(event)">
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" placeholder="Ex: Procedimento para motores" />
-
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" name="tipo">
-          <option>Manual de Operação</option>
-          <option>Procedimento de Segurança</option>
-          <option>Manutenção e Reparos</option>
-          <option>Testes e Diagnóstico</option>
-          <option>Manual de Conduta e Operações Setoriais</option>
+  <!-- Conteúdo principal -->
+  <div id="conteudo" style="display: none;">
+    <header>
+      <div class="header-container">
+        <a href="#" onclick="mostrarSecao('inicio')">
+          <img src="logoWeg.png" alt="Logo da WEG" class="logo" />
+        </a>
+        <h1><a href="#" onclick="mostrarSecao('inicio')">WegOne</a></h1>
+        <select id="language">
+          <option value="pt">Português</option>
+          <option value="en">Inglês</option>
+          <option value="de">Alemão</option>
+          <option value="es">Espanhol</option>
+          <option value="zh-CN">Mandarim</option>
         </select>
+        <img src="perfil.png" alt="Perfil" class="perfil" onclick="toggleMenu()" />
+        <div id="menu-perfil" class="dropdown-menu">
+          <ul>
+            <li><a href="#" onclick="mostrarSecao('perfil')">Perfil</a></li>
+            <li><a href="#" onclick="mostrarSecao('historico')">Histórico</a></li>
+            <li><a href="#" onclick="confirmarSaida()">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
-        <label for="conteudo">Conteúdo:</label>
-        <textarea id="conteudo" name="conteudo"></textarea>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="mostrarSecao('inicio')">Início</a></li>
+        <li><a href="#" onclick="mostrarSecao('cadastro')">Cadastrar</a></li>
+        <li><a href="#" onclick="mostrarSecao('pesquisar')">Pesquisar</a></li>
+        <li><a href="#" onclick="mostrarSecao('editar')">Editar</a></li>
+        <li><a href="#" onclick="mostrarSecao('excluir')">Excluir</a></li>
+      </ul>
+    </nav>
 
-        <button type="submit">Cadastrar</button>
-      </form>
-    </section>
+    <main>
+      <section id="inicio">
+        <h2>Bem-vindo ao Sistema WegOne</h2>
+        <p>Escolha uma opção no menu acima para começar.</p>
+      </section>
 
-    <section id="pesquisar" style="display: none">
-      <h2>Pesquisar Orientação</h2>
-      <form onsubmit="realizarPesquisa(event)">
-        <label for="pesquisa">Título ou Tipo:</label>
-        <input type="text" id="pesquisa" name="pesquisa" placeholder="Digite o que deseja buscar..." />
-        <button type="submit">Pesquisar</button>
-      </form>
-      <div id="resultado-pesquisa" style="margin-top: 20px;"></div>
-    </section>
+      <section id="cadastro" style="display: none;">
+        <h2>Cadastrar Nova Orientação</h2>
+        <form onsubmit="realizarCadastro(event)">
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" name="titulo" placeholder="Ex: Procedimento para motores">
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" name="tipo">
+            <option>Manual de Operação</option>
+            <option>Procedimento de Segurança</option>
+            <option>Manutenção e Reparos</option>
+            <option>Testes e Diagnóstico</option>
+            <option>Manual de Conduta e Operações Setoriais</option>
+          </select>
+          <label for="conteudo">Conteúdo:</label>
+          <textarea id="conteudo" name="conteudo"></textarea>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </section>
 
-    <section id="editar" style="display: none">
-      <h2>Editar Orientação</h2>
-      <form onsubmit="realizarEdicao(event)">
-        <label for="id-editar">ID da Orientação:</label>
-        <input type="text" id="id-editar" name="id-editar" placeholder="Ex: 102" />
+      <section id="pesquisar" style="display: none;">
+        <h2>Pesquisar Orientação</h2>
+        <form onsubmit="realizarPesquisa(event)">
+          <label for="pesquisa">Título ou Tipo:</label>
+          <input type="text" id="pesquisa" name="pesquisa" placeholder="Digite o que deseja buscar...">
+          <button type="submit">Pesquisar</button>
+        </form>
+        <div id="resultado-pesquisa" style="margin-top: 20px;"></div>
+      </section>
 
-        <label for="titulo-editar">Novo Título:</label>
-        <input type="text" id="titulo-editar" name="titulo-editar" />
+      <section id="editar" style="display: none;">
+        <h2>Editar Orientação</h2>
+        <form onsubmit="realizarEdicao(event)">
+          <label for="id-editar">ID da Orientação:</label>
+          <input type="text" id="id-editar" name="id-editar">
+          <label for="titulo-editar">Novo Título:</label>
+          <input type="text" id="titulo-editar" name="titulo-editar">
+          <label for="tipo-editar">Novo Tipo:</label>
+          <select id="tipo-editar" name="tipo-editar">
+            <option>Manual de Operação</option>
+            <option>Procedimento de Segurança</option>
+            <option>Manutenção e Reparos</option>
+            <option>Testes e Diagnóstico</option>
+            <option>Manual de Conduta e Operações Setoriais</option>
+          </select>
+          <label for="conteudo-editar">Novo Conteúdo:</label>
+          <textarea id="conteudo-editar" name="conteudo-editar"></textarea>
+          <button type="submit">Salvar Alterações</button>
+        </form>
+      </section>
 
-        <label for="tipo-editar">Novo Tipo:</label>
-        <select id="tipo-editar" name="tipo-editar">
-          <option>Manual de Operação</option>
-          <option>Procedimento de Segurança</option>
-          <option>Manutenção e Reparos</option>
-          <option>Testes e Diagnóstico</option>
-          <option>Manual de Conduta e Operações Setoriais</option>
-        </select>
+      <section id="excluir" style="display: none;">
+        <h2>Excluir Orientação</h2>
+        <form onsubmit="realizarExclusao(event)">
+          <label for="id-excluir">ID da Orientação:</label>
+          <input type="text" id="id-excluir" name="id-excluir">
+          <button type="submit">Excluir</button>
+        </form>
+      </section>
 
-        <label for="conteudo-editar">Novo Conteúdo:</label>
-        <textarea id="conteudo-editar" name="conteudo-editar"></textarea>
+      <section id="perfil" style="display: none;">
+        <h2>Meu Perfil</h2>
+        <form>
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome">
+          <label for="foto">Foto de Perfil:</label>
+          <input type="file" id="foto" name="foto">
+          <label for="senha">Nova Senha:</label>
+          <input type="password" id="senha" name="senha">
+          <button type="submit">Salvar Alterações</button>
+        </form>
+      </section>
 
-        <button type="submit">Salvar Alterações</button>
-      </form>
-    </section>
-
-    <section id="excluir" style="display: none">
-      <h2>Excluir Orientação</h2>
-      <form onsubmit="realizarExclusao(event)">
-        <label for="id-excluir">ID da Orientação:</label>
-        <input type="text" id="id-excluir" name="id-excluir" placeholder="Digite o ID da orientação a excluir" />
-        <button type="submit">Excluir</button>
-      </form>
-    </section>
-  </main>
-</div>
+      <section id="historico" style="display: none;">
+        <h2>Histórico de Ações</h2>
+        <ul>
+          <li>Login realizado em 08/05/2025</li>
+          <li>Cadastro realizado</li>
+          <li>Pesquisa realizada</li>
+        </ul>
+      </section>
+    </main>
+  </div>
 </body>
 
 </html>

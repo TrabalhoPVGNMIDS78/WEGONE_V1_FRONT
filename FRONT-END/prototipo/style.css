@@ -5,11 +5,14 @@ body {
   padding: 0;
 }
 
+/* Cabeçalho */
 header {
   background-color: #005baa;
   color: white;
   padding: 20px 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 10;
 }
 
 .header-container {
@@ -17,18 +20,41 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  max-width: 1100px;
+  max-width: 1800px;
   margin: auto;
   padding: 0 20px;
 }
 
 .logo {
+  display: block;
   height: 70px;
+}
+
+.logo2 {
+  display: block;
+  margin: auto;
+  height: 70px;
+  width: 70px;
+}
+
+.perfil {
+  height: 50px;
+  cursor: pointer;
 }
 
 header h1 {
   margin: 0;
   font-size: 26px;
+}
+
+header h1 a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+header h1 a:hover {
+  color: #a3d3ff;
 }
 
 header select {
@@ -38,6 +64,7 @@ header select {
   font-size: 14px;
 }
 
+/* Menu de navegação */
 nav ul {
   background-color: #003f7f;
   list-style: none;
@@ -60,6 +87,7 @@ nav ul li a:hover {
   color: #a3d3ff;
 }
 
+/* Conteúdo principal */
 main {
   padding: 40px 20px;
   max-width: 900px;
@@ -71,6 +99,7 @@ section {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 section h2 {
@@ -89,7 +118,9 @@ label {
   margin-bottom: 5px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   padding: 12px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -114,7 +145,6 @@ button:hover {
   background-color: #003f7f;
 }
 
-/* Botão de exportar PDF com cor diferente */
 button[type="button"] {
   background-color: #009688;
 }
@@ -123,7 +153,7 @@ button[type="button"]:hover {
   background-color: #00695c;
 }
 
-/* Estilo da tela de login/cadastro */
+/* Tela de login/cadastro */
 .login-box {
   display: flex;
   justify-content: center;
@@ -134,9 +164,9 @@ button[type="button"]:hover {
 
 .login-box .form-box {
   background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  padding: 70px;
+  border-radius: 22px;
+  box-shadow: 0 2px 22px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 100%;
   max-width: 400px;
@@ -149,6 +179,7 @@ button[type="button"]:hover {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 15px;
+  box-sizing: border-box;
 }
 
 .login-box button {
@@ -158,7 +189,7 @@ button[type="button"]:hover {
   width: 100%;
   border: none;
   border-radius: 6px;
-  font-size: 15px;
+  font-size: 22px;
   cursor: pointer;
   margin-top: 10px;
 }
@@ -167,7 +198,7 @@ button[type="button"]:hover {
   background-color: #004080;
 }
 
-/* Resultado da Pesquisa */
+/* Resultado de pesquisa */
 #resultado-pesquisa {
   background-color: #f1f8ff;
   padding: 20px;
@@ -183,18 +214,39 @@ button[type="button"]:hover {
   color: #005baa;
 }
 
-/* Link no título WegOne */
-header h1 a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
+/* Dropdown menu perfil */
+.dropdown-menu {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 100;
 }
 
-header h1 a:hover {
-  color: #a3d3ff;
-}
-
-/* Para o logo não colar no texto */
-.header-container a img.logo {
+.dropdown-menu.show {
   display: block;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.dropdown-menu ul li {
+  padding: 10px;
+  text-align: left;
+}
+
+.dropdown-menu ul li a {
+  color: #003f7f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu ul li a:hover {
+  color: #005baa;
 }
