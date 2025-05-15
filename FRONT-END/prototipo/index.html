@@ -7,141 +7,6 @@
   <link rel="shortcut icon" href="iconweg.ico" type="image/x-icon">
   <title>WegOne - Sistema de Orientações</title>
   <link rel="stylesheet" href="style.css" />
-
-   <!-- Bloco de scripts JavaScript -->
-  <script>
-     // Função para mostrar uma seção e ocultar as outras
-    function mostrarSecao(id) {
-      document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
-      document.getElementById(id).style.display = "block";
-    }
-
-      // Função para mostrar a tela de login, cadastro ou o conteúdo principal
-    function mostrarTela(tela) {
-      document.getElementById('login-cadastro').style.display = 'none';
-      document.getElementById('cadastro-box').style.display = 'none';
-      document.getElementById('conteudo').style.display = 'none';
-
-      // Exibe a tela com base no parâmetro 'tela'
-      if (tela === 'app') {
-        document.getElementById('conteudo').style.display = 'block';
-        mostrarSecao('inicio');
-      } else if (tela === 'cadastro') {
-        document.getElementById('cadastro-box').style.display = 'flex';
-      } else {
-        document.getElementById('login-cadastro').style.display = 'flex';
-      }
-    }
-
-    // Função que realiza o login do usuário
-    function loginUsuario() {
-      mostrarTela('app'); // Mostra o conteúdo principal após o login
-      // Limpa os campos do formulário de login
-      document.getElementById("login-usuario").value = "";
-      document.getElementById("login-cadastroId").value = "";
-      document.getElementById("login-senha").value = "";
-    }
-
-    // Função que abre a tela de cadastro
-    function abrirCadastro() {
-      mostrarTela('cadastro');
-    }
-  
-    // Função que realiza o cadastro do usuário
-    function cadastrarUsuario() {
-      mostrarTela('app');
-      // Limpa os campos do formulário de cadastro
-      document.getElementById("cad-nome").value = "";
-      document.getElementById("cad-cadastro").value = "";
-      document.getElementById("cad-email").value = "";
-      document.getElementById("cad-senha").value = "";
-      document.getElementById("cad-confirmar").value = "";
-    }
-
-    // Função que abre a tela de login
-    function abrirLogin() {
-      mostrarTela('login-cadastro');
-    }
-
-    // Função para solicitar a senha antes de realizar ações sensíveis
-    function solicitarSenha(acao, evento, callback) {
-      evento.preventDefault();
-      const senha = prompt(`Digite a senha para ${acao}:`);
-      if (senha === "1234") {
-        alert(`${acao} autorizado com sucesso.`);
-        if (typeof callback === "function") callback();
-      } else {
-        alert("Senha incorreta. Ação cancelada.");
-      }
-    }
-
-    // Função que realiza o cadastro de uma nova orientação
-    function realizarCadastro(event) {
-      solicitarSenha("Cadastrar", event, () => {
-        alert("Cadastro realizado!");
-        document.getElementById("titulo").value = "";
-        document.getElementById("tipo").selectedIndex = 0;
-        document.getElementById("conteudo").value = "";
-      });
-    }
-
-    // Função que realiza a edição de uma orientação existente
-    function realizarEdicao(event) {
-      solicitarSenha("Editar", event, () => {
-        alert("Edição realizada!");
-        document.getElementById("id-editar").value = "";
-        document.getElementById("titulo-editar").value = "";
-        document.getElementById("tipo-editar").selectedIndex = 0;
-        document.getElementById("conteudo-editar").value = "";
-      });
-    }
-
-    // Função que realiza a exclusão de uma orientação
-    function realizarExclusao(event) {
-      solicitarSenha("Excluir", event, () => {
-        alert("Exclusão realizada!");
-        document.getElementById("id-excluir").value = "";
-      });
-    }
-
-    // Função que realiza a pesquisa de orientações
-    function realizarPesquisa(event) {
-      event.preventDefault();
-      const termo = document.getElementById('pesquisa').value.trim().toLowerCase();
-      const resultadoDiv = document.getElementById('resultado-pesquisa');
-      document.getElementById("pesquisa").value = "";
-
-      // Se não houver termo de pesquisa, exibe uma mensagem
-      if (termo === "") {
-        resultadoDiv.innerHTML = "<p>Digite algo para pesquisar.</p>";
-      } else {
-        resultadoDiv.innerHTML = `
-          <h3>Resultado Encontrado:</h3>
-          <p><strong>Título:</strong> ${termo.charAt(0).toUpperCase() + termo.slice(1)}</p>
-          <p><strong>Tipo:</strong> Manual de Operação</p>
-          <p><strong>Conteúdo:</strong> Exemplo de conteúdo da orientação pesquisada.</p>
-        `;
-      }
-    }
-
-    // Função para exibir o menu de perfil
-    function toggleMenu() {
-      document.getElementById("menu-perfil").classList.toggle("show");
-    }
-
-    // Função para confirmar a saída da conta
-    function confirmarSaida() {
-      if (confirm("Deseja realmente sair da conta?")) {
-        mostrarTela('login');
-      }
-    }
-
-    // Função que será executada ao carregar a página
-    window.onload = () => {
-      mostrarTela('login');
-    };
-  </script>
-  
 </head>
 
 <body>
@@ -167,44 +32,44 @@
       <input type="text" id="cad-cadastro" placeholder="Cadastro" required>
       <input type="email" id="cad-email" placeholder="Email" required>
       <input type="password" id="cad-senha" placeholder="Senha" required>
+      <div id="erro-senha" class="erro"></div>
       <input type="password" id="cad-confirmar" placeholder="Confirmar Senha" required>
+      <div id="erro-confirmar" class="erro"></div>
       <button id="botao-cadastro" type="submit">Cadastrar</button>
       <p>Já tem uma conta? <a href="#" onclick="abrirLogin()">Faça Login</a></p>
     </form>
   </div>
 
   <!-- Conteúdo Principal -->
-  <div id="conteudo" style="display: none;"> <!-- Inicialmente Escondido-->
+  <div id="conteudo" style="display: none;">
     <header>
-  <div class="header-container">
-    <a href="#" onclick="mostrarSecao('inicio')">
-      <img src="logoWeg.png" alt="Logo da WEG" class="logo" />
-    </a>
-    <h1><a href="#" onclick="mostrarSecao('inicio')">WegOne</a></h1>
+      <div class="header-container">
+        <a href="#" onclick="mostrarSecao('inicio')">
+          <img src="logoWeg.png" alt="Logo da WEG" class="logo" />
+        </a>
+        <h1><a href="#" onclick="mostrarSecao('inicio')">WegOne</a></h1>
 
-    <!-- Novo container para o perfil e seletor -->
-    <div class="direita">
-      <img src="perfil.png" alt="Perfil" class="perfil" onclick="toggleMenu()" />
-      <select id="language">
-        <option value="pt">🇧🇷</option>
-        <option value="en">🇺🇸</option>
-        <option value="de">🇩🇪</option>
-        <option value="es">🇪🇸</option>
-        <option value="zh-CN">🇨🇳</option>
-      </select>
-    </div>
+        <div class="direita">
+          <img src="perfil.png" alt="Perfil" class="perfil" onclick="toggleMenu()" />
+          <select id="language">
+            <option value="pt">🇧🇷</option>
+            <option value="en">🇺🇸</option>
+            <option value="de">🇩🇪</option>
+            <option value="es">🇪🇸</option>
+            <option value="zh-CN">🇨🇳</option>
+          </select>
+        </div>
 
-    <div id="menu-perfil" class="dropdown-menu">
-      <ul>
-        <li><a href="#" onclick="mostrarSecao('perfil')">Perfil</a></li>
-        <li><a href="#" onclick="mostrarSecao('historico')">Histórico</a></li>
-        <li><a href="#" onclick="confirmarSaida()">Sair</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
+        <div id="menu-perfil" class="dropdown-menu">
+          <ul>
+            <li><a href="#" onclick="mostrarSecao('perfil')">Perfil</a></li>
+            <li><a href="#" onclick="mostrarSecao('historico')">Histórico</a></li>
+            <li><a href="#" onclick="confirmarSaida()">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
-    <!-- Menu de Navegação -->
     <nav>
       <ul>
         <li><a href="#" onclick="mostrarSecao('inicio')">Início</a></li>
@@ -215,7 +80,6 @@
       </ul>
     </nav>
 
-    <!-- Seções de Conteúdo, que são alternadas -->
     <main>
       <section id="inicio">
         <h2>Bem-vindo ao Sistema WegOne</h2>
@@ -304,6 +168,9 @@
       </section>
     </main>
   </div>
+
+  <!-- Link para o arquivo JS externo -->
+  <script src="script.js"></script>
 </body>
 
 </html>
