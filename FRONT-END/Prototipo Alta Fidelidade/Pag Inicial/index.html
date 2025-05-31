@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WegOne - Sistema de Orientações</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../Pag Inicial/index.html">
+                    <img src="" alt="Logo da WEG">
+                </a>
+            </div>
+
+            <h1><a href="../Pag Inicial/index.html">WegOne</a></h1>
+
+            <div class="linguagens">
+                <select id="language">
+                    <option value="pt">🇧🇷</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="es">🇪🇸</option>
+                    <option value="zn-CN">🇨🇳</option>
+                </select>
+            </div>
+
+            <div id="menu-perfil" class="dropdown-menu">
+                <a href="">Logo Perfil</a>
+                <ul>
+                    <li><a href="../Pags Perfil/perfil.html">Perfil</a></li>
+                    <li><a href="../Pags Perfil/historico.html">Histórico</a></li>
+                    <li><a href="../Pag Login-Cadastro/login.html" onclick="">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="../Pag Inicial/index.html">Início</a></li>
+                <li><a href="../Pags Extras/pesquisar.html">Pesquisar</a></li>
+                <li><a href="../Pags Extras/cadastrar.html">Cadastrar</a></li>
+                <li><a href="../Pags Extras/editar.html">Editar</a></li>
+                <li><a href="../Pags Extras/excluir.html">Excluir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="destaque">
+        <section class="destaque">
+            <div class="conteudo-destaque">
+                <h1>Bem-Vindo ao WegOne!</h1>
+                <p>O sistema oficial de consulta e gerenciamento de manuais técnicos e pesquisas da WEG.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FALTA FINALIZAR A BUSCA INTELIGENTE -->
+    <main id="busca-inteligente">
+        <input type="text" id="busca" placeholder="Pesquisar manual ou produto..." oninput="filtrar()">
+
+        <ul id="resultados">
+            <li>Inversor CFFW300</li>
+            <li>Motor W22 IR3 Premium</li>
+            <li>Transformador Seco 15kVA</li>
+        </ul>
+
+        <!-- O SCRIPT VAI IR PARA O script.js -->
+        <script>
+            function filtrar() {
+                const termo = document.getElementById("busca").value.toLowerCase();
+                const itens = document.querySelectorAll("#resultados li");
+                itens.forEach(li => {
+                    li.style.display = li.textContent.toLowerCase().includes(termo) ? "block" : "none";
+                })
+            }
+        </script>
+    </main>
+
+    <main id="sobre">
+        <h2>Sobre a WEG</h2>
+        <p>A WEG foi fundada em 1961, na cidade de Jaraguá do Sul, Santa Catarina, por três empreendedores visionários: Werner Ricardo Voigt, Eggon João da Silva e Geraldo Werninghaus. A união das inicias de seus nomes deu origem à marca WEG, que logo se tornaria símbolo de inovação, tecnologia e compromisso com a excelência. <br> <br>
+        No início, a empresa focava exclusivamente na fabricação dos motores elétricos industriais. Com o passar dos anos, investindo fortemente em pesquisa, desenvolvimento e capacitação de pessoas, a WEG ampliou seu portfólio e passou a atuar em diversos setores estratégicos da indústria e da energia. <br> <br>
+        Hoje, a WEG é uma das maiores fabricantes de equipamentos eletroeletrônicos do mundo, com unidades produtivas em mais de 15 países e presença comercial em mais de 135. A empresa oferece soluções completas em automação industrial, motores, inversores, transformadores, energia renovável, mobilidade elétrica, tintas e vernizes industriais, além de ferramentas digitais para a Indústria 4.0. <br> <br>
+        Mais do que uma fabricante, a WEG se destaca por seu compromisso com a sustentabilidade, inovação contínua e responsabilidade social.Sua trajetória é marcada por parcerias duradouras, crescimento sustentável e a busca constante por tecnologias que contribuam para um mundo mais eficiente e conectado.
+        </p>
+    </main>
+
+    <main id="conteudos">
+        <h2>Segmentos Industriais Atendidos pela WEG</h2>
+
+        <div id="produtos">
+            <article class="produto">
+                <h3>Automação Industrial</h3>
+                <p>Soluções completas para controle e automação de máquinas e processos industriais.</p>
+            </article>
+
+            <article class="produto">
+                <h3>Motores e Equipamentos Elétricos</h3>
+                <p>Produção de motores elétricos, redutores, motoredutores e acionamentos.</p>
+            </article>
+
+            <article class="produto">
+                <h3>Geração, Transmissão e Distribuição de Energia</h3>
+                <p>Transformadores, geradores, subestações e sistemas de energia para concessionárias e indústrias.</p>
+            </article>
+
+            <article class="produto">
+                <h3>Energias Renováveis</h3>
+                <p>Sistemas solares, eólicos para armazenamento de energia.</p>
+            </article>
+
+            <article class="produto">
+                <h3>Grupos Geradores</h3>
+                <p>Equipamentos que fornecem energia em locais remotos ou como backup.</p>
+            </article>
+
+            <article class="produto">
+                <h3>Tintas e Vernizes Industriais</h3>
+                <p>Revestimentos anticorrosivos, eletroisolantes e decorativos para diversas aplicações.</p>
+            </article>
+
+            <article class="produto">
+                <h3>Mobilidade Elétrica</h3>
+                <p>Soluções para veículos elétricos, incluindo estações de recarga e motores para mobilidade.</p>
+            </article>
+
+            <article class="produto">
+                <h3>Digitalização e Indústria 4.0</h3>
+                <p>Soluções em IoT, gêmeo digital, monitoramento remoto e softwares industriais.</p>
+            </article>
+        </div>
+    </main>
+
+    <!-- TEM QUE FAZER AINDA, PROCURAR JEITOS PARA FAZER DO MELHOR JEITO, AINDA PENSANDO EM COMO -->
+    <main id="catalago-rapido">
+    </main>
+
+    <footer>
+        <p> 
+            &copy; 2025 WegOne - Sistema de Orientações | Contato:
+            <a href="mailto:contato@wegone.com" target="_blank" rel="external">contato@wegone.com</a>
+            <a href="https://wa.me/5547900000000" target="_blank" rel="external">(47) 90000-0000</a>
+        </p>
+        <p>
+            Siga-nos:
+            <a href="//www.facebook.com" target="_blank" rel="external">Facebook</a>
+            <a href="https://www.instagram.com" target="_blank" rel="external">Intagram</a>
+            <a href="href="https://x.com/" target="_blank" rel="external"">Twitter</a>
+        </p>
+    </footer>
+</body>
+
+</html>
