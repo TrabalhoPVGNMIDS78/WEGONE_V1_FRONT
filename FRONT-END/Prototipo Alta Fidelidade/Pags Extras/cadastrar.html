@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WegOne - Cadastrar Manual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../Pags Extras/cadastrar.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">W</div>
+                <a href="../Pag Inicial/index.html" class="brand-name">WegOne</a>
+            </div>
+            
+            <div class="header-actions">
+                <select class="language-selector" id="language">
+                    <option value="pt">🇧🇷</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="es">🇪🇸</option>
+                    <option value="zh">🇨🇳</option>
+                </select>
+                
+                <div class="profile-menu">
+                    <div class="profile-btn">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../Pag Inicial/index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li class="nav-item"><a href="#search"><i class="fas fa-search"></i> Pesquisar</a></li>
+                <li class="nav-item"><a href="#register" class="active"><i class="fas fa-plus"></i> Cadastrar</a></li>
+                <li class="nav-item"><a href="#edit"><i class="fas fa-edit"></i> Editar</a></li>
+                <li class="nav-item"><a href="#delete"><i class="fas fa-trash"></i> Excluir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SEÇÃO PRINCIPAL DE CADASTRO -->
+    <section class="cadastro-section" id="register">
+        <div class="cadastro-container">
+            <div class="page-header">
+                <h1>Cadastrar Manual Técnico</h1>
+                <p>Adicione novos manuais, documentações e materiais técnicos ao sistema WegOne para facilitar consultas futuras</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="cadastroForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="nomeManual">
+                                Nome do Manual <span class="required">*</span>
+                            </label>
+                            <input type="text" class="form-input" id="nomeManual" name="nomeManual" placeholder="Ex: Manual Técnico Inversor CFFW300" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="codigoProduto">
+                                Código do Produto <span class="required">*</span>
+                            </label>
+                            <input type="text" class="form-input" id="codigoProduto" name="codigoProduto" placeholder="Ex: CFFW300-007T4" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="categoria">
+                                Categoria <span class="required">*</span>
+                            </label>
+                            <select class="form-select" id="categoria" name="categoria" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="motores">Motores Elétricos</option>
+                                <option value="inversores">Inversores de Frequência</option>
+                                <option value="transformadores">Transformadores</option>
+                                <option value="geradores">Grupos Geradores</option>
+                                <option value="automacao">Automação Industrial</option>
+                                <option value="renovaveis">Energias Renováveis</option>
+                                <option value="tintas">Tintas e Vernizes</option>
+                                <option value="mobilidade">Mobilidade Elétrica</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="versao">
+                                Versão do Manual
+                            </label>
+                            <input type="text" class="form-input" id="versao" name="versao" placeholder="Ex: v2.1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="dataPublicacao">
+                                Data de Publicação
+                            </label>
+                            <input type="date" class="form-input" id="dataPublicacao" name="dataPublicacao">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="idioma">
+                                Idioma <span class="required">*</span>
+                            </label>
+                            <select class="form-select" id="idioma" name="idioma" required>
+                                <option value="">Selecione o idioma</option>
+                                <option value="pt">Português</option>
+                                <option value="en">Inglês</option>
+                                <option value="es">Espanhol</option>
+                                <option value="de">Alemão</option>
+                                <option value="zh">Chinês</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="descricao">
+                                Descrição do Manual
+                            </label>
+                            <textarea class="form-textarea" id="descricao" name="descricao" placeholder="Descreva o conteúdo e principais características do manual..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="palavrasChave">
+                                Palavras-chave
+                            </label>
+                            <input type="text" class="form-input" id="palavrasChave" name="palavrasChave" placeholder="Ex: inversor, frequência, instalação, manutenção (separadas por vírgula)">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="arquivo">
+                                Arquivo do Manual <span class="required">*</span>
+                            </label>
+                            <div class="file-upload">
+                                <input type="file" class="file-upload-input" id="arquivo" name="arquivo" accept=".pdf,.doc,.docx" required>
+                                <label for="arquivo" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                                    <span>Clique para selecionar o arquivo ou arraste aqui</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Cadastrar Manual
+                        </button>
+                        <button type="reset" class="btn-secondary">
+                            <i class="fas fa-undo"></i>
+                            Limpar Formulário
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PRÉVIA DOS BENEFÍCIOS -->
+    <section class="preview-section">
+        <div class="preview-container">
+            <div class="preview-header">
+                <h2>Por que Cadastrar no WegOne?</h2>
+                <p>Vantagens de ter seus manuais organizados em nossa plataforma</p>
+            </div>
+            
+            <div class="preview-cards">
+                <div class="preview-card">
+                    <div class="preview-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Busca Inteligente</h3>
+                    <p>Encontre rapidamente qualquer manual através de busca por código, produto ou palavra-chave</p>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="preview-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Acesso Global</h3>
+                    <p>Disponível em múltiplos idiomas e acessível de qualquer lugar do mundo</p>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="preview-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança Total</h3>
+                    <p>Seus documentos ficam seguros com backup automático e controle de versão</p>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="preview-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Colaboração</h3>
+                    <p>Facilite o trabalho em equipe com acesso compartilhado e organizado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>WegOne</h3>
+                    <p>
+                        Sistema oficial de consulta e gerenciamento de manuais técnicos e pesquisas da WEG. 
+                        Conectando tecnologia e inovação para um futuro mais eficiente.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://br.linkedin.com" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#search">Pesquisar</a></li>
+                        <li><a href="#register">Cadastrar</a></li>
+                        <li><a href="#edit">Editar</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@wegone.com">contato@wegone.com</a></li>
+                        <li><a href="tel:+5547900000000">(47) 90000-0000</a></li>
+                        <li><a href="#">Suporte Técnico</a></li>
+                        <li><a href="#">Central de Ajuda</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WegOne - Sistema de Orientações. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para lidar com o upload de arquivo
+        const fileInput = document.getElementById('arquivo');
