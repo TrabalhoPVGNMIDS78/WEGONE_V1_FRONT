@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WegOne - Editar Orientações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="editar.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">W</div>
+                <a href="../Pag Inicial/index.html" class="brand-name">WegOne</a>
+            </div>
+            
+            <div class="header-actions">
+                <select class="language-selector" id="language">
+                    <option value="pt">🇧🇷</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="es">🇪🇸</option>
+                    <option value="zh">🇨🇳</option>
+                </select>
+                
+                <div class="profile-menu">
+                    <div class="profile-btn">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../Pag Inicial/index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li class="nav-item"><a href="../Pag Inicial/index.html#search"><i class="fas fa-search"></i> Pesquisar</a></li>
+                <li class="nav-item"><a href="../Pags Extras/cadastrar.html"><i class="fas fa-plus"></i> Cadastrar</a></li>
+                <li class="nav-item"><a href="#" class="active"><i class="fas fa-edit"></i> Editar</a></li>
+                <li class="nav-item"><a href="#delete"><i class="fas fa-trash"></i> Excluir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SEÇÃO HERO DA PÁGINA EDITAR -->
+    <section class="hero" id="edit">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Editar Orientações</h1>
+                <p class="subtitle">Gerencie e Atualize Documentações Técnicas</p>
+                <p class="description">
+                    Edite manuais, especificações e orientações técnicas existentes no sistema WegOne. 
+                    Mantenha suas documentações sempre atualizadas com as últimas informações.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#edit-search" class="btn-primary">
+                        <i class="fas fa-search"></i>
+                        Buscar para Editar
+                    </a>
+                    <a href="#recent-edits" class="btn-secondary">
+                        <i class="fas fa-history"></i>
+                        Edições Recentes
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-graphic">
+                    <i class="fas fa-edit hero-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUSCA PARA EDIÇÃO -->
+    <section class="search-section" id="edit-search">
+        <div class="search-container">
+            <h2 class="search-title">Buscar Documento para Editar</h2>
+            <p class="search-subtitle">Encontre rapidamente o documento que deseja editar</p>
+            
+            <div class="search-box">
+                <input type="text" 
+                       class="search-input" 
+                       id="editSearchInput"
+                       placeholder="Digite o nome do documento, código ou modelo..."
+                       oninput="handleEditSearch()">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="documentType">Tipo de Documento:</label>
+                    <select id="documentType" class="filter-select">
+                        <option value="">Todos os tipos</option>
+                        <option value="manual">Manual Técnico</option>
+                        <option value="especificacao">Especificação</option>
+                        <option value="guia">Guia de Instalação</option>
+                        <option value="manutencao">Manual de Manutenção</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="category">Categoria:</label>
+                    <select id="category" class="filter-select">
+                        <option value="">Todas as categorias</option>
+                        <option value="motores">Motores</option>
+                        <option value="inversores">Inversores</option>
+                        <option value="transformadores">Transformadores</option>
+                        <option value="automacao">Automação</option>
+                        <option value="geradores">Geradores</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="lastModified">Última Modificação:</label>
+                    <select id="lastModified" class="filter-select">
+                        <option value="">Qualquer data</option>
+                        <option value="today">Hoje</option>
+                        <option value="week">Esta semana</option>
+                        <option value="month">Este mês</option>
+                        <option value="older">Mais antigo</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="search-results" id="editSearchResults">
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-cog"></i></div>
+                    <div class="result-content">
+                        <strong>Manual Técnico - Inversor CFFW300</strong>
+                        <p>Última edição: 15/06/2025 - João Silva</p>
+                        <div class="result-meta">
+                            <span class="meta-tag">Manual Técnico</span>
+                            <span class="meta-tag">Inversores</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="action-btn edit-btn" onclick="editDocument('cffw300')">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="action-btn preview-btn" onclick="previewDocument('cffw300')">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="result-content">
+                        <strong>Especificações - Motor W22 IR3 Premium</strong>
+                        <p>Última edição: 12/06/2025 - Maria Santos</p>
+                        <div class="result-meta">
+                            <span class="meta-tag">Especificação</span>
+                            <span class="meta-tag">Motores</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="action-btn edit-btn" onclick="editDocument('w22-ir3')">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="action-btn preview-btn" onclick="previewDocument('w22-ir3')">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-power-off"></i></div>
+                    <div class="result-content">
+                        <strong>Guia de Instalação - Transformador Seco 15kVA</strong>
+                        <p>Última edição: 10/06/2025 - Carlos Oliveira</p>
+                        <div class="result-meta">
+                            <span class="meta-tag">Guia de Instalação</span>
+                            <span class="meta-tag">Transformadores</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="action-btn edit-btn" onclick="editDocument('transformador-15kva')">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="action-btn preview-btn" onclick="previewDocument('transformador-15kva')">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDIÇÕES RECENTES -->
+    <section class="recent-edits-section" id="recent-edits">
+        <div class="recent-container">
+            <h2 class="section-title">Edições Recentes</h2>
+            <p class="section-subtitle">Acompanhe as últimas modificações realizadas no sistema</p>
+            
+            <div class="recent-edits-grid">
+                <div class="edit-card">
+                    <div class="edit-header">
+                        <div class="edit-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="edit-info">
+                            <h3>Manual do Inversor CFW500</h3>
+                            <p class="edit-date">Editado há 2 horas</p>
+                        </div>
+                        <div class="edit-status status-modified">
+                            <i class="fas fa-edit"></i> Modificado
+                        </div>
+                    </div>
+                    <div class="edit-details">
+                        <p><strong>Editor:</strong> Ana Costa</p>
+                        <p><strong>Seção modificada:</strong> Especificações Técnicas</p>
+                        <p><strong>Versão:</strong> 2.1.3</p>
+                    </div>
+                    <div class="edit-actions">
+                        <button class="action-btn secondary" onclick="viewChanges('cfw500')">
+                            <i class="fas fa-history"></i> Ver Alterações
+                        </button>
+                        <button class="action-btn primary" onclick="editDocument('cfw500')">
+                            <i class="fas fa-edit"></i> Continuar Editando
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="edit-card">
+                    <div class="edit-header">
+                        <div class="edit-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <div class="edit-info">
+                            <h3>Guia de Manutenção - Motor W21</h3>
+                            <p class="edit-date">Editado há 5 horas</p>
+                        </div>
+                        <div class="edit-status status-reviewed">
+                            <i class="fas fa-check-circle"></i> Revisado
+                        </div>
+                    </div>
+                    <div class="edit-details">
+                        <p><strong>Editor:</strong> Pedro Almeida</p>
+                        <p><strong>Seção modificada:</strong> Procedimentos de Segurança</p>
+                        <p><strong>Versão:</strong> 1.8.2</p>
+                    </div>
+                    <div class="edit-actions">
+                        <button class="action-btn secondary" onclick="viewChanges('w21')">
+                            <i class="fas fa-history"></i> Ver Alterações
+                        </button>
+                        <button class="action-btn primary" onclick="editDocument('w21')">
+                            <i class="fas fa-edit"></i> Continuar Editando
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="edit-card">
+                    <div class="edit-header">
+                        <div class="edit-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="edit-info">
+                            <h3>Especificações - Painel de Comando</h3>
+                            <p class="edit-date">Editado ontem</p>
+                        </div>
+                        <div class="edit-status status-pending">
+                            <i class="fas fa-clock"></i> Pendente
+                        </div>
+                    </div>
+                    <div class="edit-details">
+                        <p><strong>Editor:</strong> Lucia Ferreira</p>
+                        <p><strong>Seção modificada:</strong> Diagramas Elétricos</p>
+                        <p><strong>Versão:</strong> 3.0.1</p>
+                    </div>
+                    <div class="edit-actions">
+                        <button class="action-btn secondary" onclick="viewChanges('painel-comando')">
+                            <i class="fas fa-history"></i> Ver Alterações
+                        </button>
+                        <button class="action-btn primary" onclick="editDocument('painel-comando')">
+                            <i class="fas fa-edit"></i> Continuar Editando
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FERRAMENTAS DE EDIÇÃO -->
+    <section class="edit-tools-section" id="edit-tools">
+        <div class="tools-container">
+            <h2 class="section-title">Ferramentas de Edição</h2>
+            <p class="section-subtitle">Recursos avançados para otimizar seu trabalho de edição</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <h3>Editor Colaborativo</h3>
+                    <p>Edite documentos em tempo real com múltiplos usuários simultaneamente.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Tempo Real</span>
+                        <span class="feature-tag">Multi-usuário</span>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Controle de Versão</h3>
+                    <p>Mantenha histórico completo de todas as alterações realizadas nos documentos.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Histórico</span>
+                        <span class="feature-tag">Rollback</span>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Sistema de Comentários</h3>
+                    <p>Adicione comentários e sugestões para facilitar a colaboração em equipe.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Comentários</span>
+                        <span class="feature-tag">Sugestões</span>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3>Aprovação de Conteúdo</h3>
+                    <p>Fluxo de aprovação integrado para garantir a qualidade das publicações.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Workflow</span>
+                        <span class="feature-tag">Aprovação</span>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Exportação Avançada</h3>
+                    <p>Exporte documentos em múltiplos formatos: PDF, Word, HTML e mais.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Multi-formato</span>
+                        <span class="feature-tag">Personalizado</span>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <h3>Verificação Inteligente</h3>
+                    <p>Correção ortográfica e verificação de consistência técnica automatizada.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Auto-correção</span>
+                        <span class="feature-tag">IA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>WegOne</h3>
+                    <p>
+                        Sistema oficial de consulta e gerenciamento de manuais técnicos e pesquisas da WEG. 
+                        Conectando tecnologia e inovação para um futuro mais eficiente.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com" target="_blank" rel="external" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="external" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com" target="_blank" rel="external" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://br.linkedin.com" target="_blank" rel="external" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" rel="external" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../Pag Inicial/index.html">Início</a></li>
+                        <li><a href="#search">Pesquisar</a></li>
+                        <li><a href="../Pags Extras/cadastrar.html">Cadastrar</a></li>
+                        <li><a href="#edit">Editar</a></li>
+                        <li><a href="#delete">Excluir</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@wegone.com">contato@wegone.com</a></li>
+                        <li><a href="tel:+5547900000000">(47) 90000-0000</a></li>
+                        <li><a href="#">Suporte Técnico</a></li>
+                        <li><a href="#">Central de Ajuda</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WegOne - Sistema de Orientações. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função de busca para edição
+        function handleEditSearch() {
+            const searchInput = document.getElementById('editSearchInput');
+            const searchResults = document.getElementById('editSearchResults');
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query.length > 0) {
+                searchResults.classList.add('active');
+                
+                // Simulação de filtro em tempo real
+                const resultItems = searchResults.querySelectorAll('.result-item');
+                resultItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        item.style.display = 'flex';
+                        item.style.animation = 'slideInLeft 0.3s ease';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            } else {
+                searchResults.classList.remove('active');
+            }
+        }
+        
+        // Função para editar documento
+        function editDocument(documentId) {
+            console.log('Editando documento:', documentId);
+            // Aqui seria implementada a lógica para abrir o editor
+            alert(`Abrindo editor para o documento: ${documentId}`);
+        }
+        
+        // Função para visualizar documento
+        function previewDocument(documentId) {
+            console.log('Visualizando documento:', documentId);
+            // Aqui seria implementada a lógica para abrir a visualização
+            alert(`Abrindo visualização do documento: ${documentId}`);
+        }
+        
+        // Função para ver alterações
+        function viewChanges(documentId) {
+            console.log('Visualizando alterações do documento:', documentId);
+            // Aqui seria implementada a lógica para mostrar o histórico de alterações
+            alert(`Mostrando histórico de alterações do documento: ${documentId}`);
+        }
+        
+        // Filtros de pesquisa
+        document.addEventListener('DOMContentLoaded', function() {
+            const filters = document.querySelectorAll('.filter-select');
+            filters.forEach(filter => {
+                filter.addEventListener('change', function() {
+                    // Aqui seria implementada a lógica de filtro
+                    console.log('Filtro alterado:', this.id, this.value);
+                });
+            });
+        });
+        
+        // Smooth scrolling para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Efeito de scroll no header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(2, 93, 168, 0.95) 0%, rgba(0, 115, 204, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+        
+        // Animação de entrada dos elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animação
+        document.querySelectorAll('.edit-card, .tool-card, .result-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
