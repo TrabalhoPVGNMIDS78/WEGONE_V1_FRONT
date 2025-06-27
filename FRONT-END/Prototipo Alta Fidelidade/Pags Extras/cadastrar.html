@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WegOne - Cadastrar Manual</title>
+    <title>WegOne - Cadastrar Documento</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="../Pags Extras/cadastrar.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="cadastrar.css">
 </head>
 
 <body>
@@ -41,170 +42,237 @@
         <div class="nav-container">
             <ul class="nav-list">
                 <li class="nav-item"><a href="../Pag Inicial/index.html"><i class="fas fa-home"></i> Início</a></li>
-                <li class="nav-item"><a href="#search"><i class="fas fa-search"></i> Pesquisar</a></li>
-                <li class="nav-item"><a href="#register" class="active"><i class="fas fa-plus"></i> Cadastrar</a></li>
+                <li class="nav-item"><a href="../Pag Inicial/index.html#search"><i class="fas fa-search"></i> Pesquisar</a></li>
+                <li class="nav-item active"><a href="#"><i class="fas fa-plus"></i> Cadastrar</a></li>
                 <li class="nav-item"><a href="#edit"><i class="fas fa-edit"></i> Editar</a></li>
                 <li class="nav-item"><a href="#delete"><i class="fas fa-trash"></i> Excluir</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- SEÇÃO PRINCIPAL DE CADASTRO -->
-    <section class="cadastro-section" id="register">
-        <div class="cadastro-container">
-            <div class="page-header">
-                <h1>Cadastrar Manual Técnico</h1>
-                <p>Adicione novos manuais, documentações e materiais técnicos ao sistema WegOne para facilitar consultas futuras</p>
-            </div>
-            
-            <div class="form-container">
-                <form id="cadastroForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label" for="nomeManual">
-                                Nome do Manual <span class="required">*</span>
-                            </label>
-                            <input type="text" class="form-input" id="nomeManual" name="nomeManual" placeholder="Ex: Manual Técnico Inversor CFFW300" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="codigoProduto">
-                                Código do Produto <span class="required">*</span>
-                            </label>
-                            <input type="text" class="form-input" id="codigoProduto" name="codigoProduto" placeholder="Ex: CFFW300-007T4" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="categoria">
-                                Categoria <span class="required">*</span>
-                            </label>
-                            <select class="form-select" id="categoria" name="categoria" required>
-                                <option value="">Selecione uma categoria</option>
-                                <option value="motores">Motores Elétricos</option>
-                                <option value="inversores">Inversores de Frequência</option>
-                                <option value="transformadores">Transformadores</option>
-                                <option value="geradores">Grupos Geradores</option>
-                                <option value="automacao">Automação Industrial</option>
-                                <option value="renovaveis">Energias Renováveis</option>
-                                <option value="tintas">Tintas e Vernizes</option>
-                                <option value="mobilidade">Mobilidade Elétrica</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="versao">
-                                Versão do Manual
-                            </label>
-                            <input type="text" class="form-input" id="versao" name="versao" placeholder="Ex: v2.1">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="dataPublicacao">
-                                Data de Publicação
-                            </label>
-                            <input type="date" class="form-input" id="dataPublicacao" name="dataPublicacao">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="idioma">
-                                Idioma <span class="required">*</span>
-                            </label>
-                            <select class="form-select" id="idioma" name="idioma" required>
-                                <option value="">Selecione o idioma</option>
-                                <option value="pt">Português</option>
-                                <option value="en">Inglês</option>
-                                <option value="es">Espanhol</option>
-                                <option value="de">Alemão</option>
-                                <option value="zh">Chinês</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label class="form-label" for="descricao">
-                                Descrição do Manual
-                            </label>
-                            <textarea class="form-textarea" id="descricao" name="descricao" placeholder="Descreva o conteúdo e principais características do manual..."></textarea>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label class="form-label" for="palavrasChave">
-                                Palavras-chave
-                            </label>
-                            <input type="text" class="form-input" id="palavrasChave" name="palavrasChave" placeholder="Ex: inversor, frequência, instalação, manutenção (separadas por vírgula)">
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label class="form-label" for="arquivo">
-                                Arquivo do Manual <span class="required">*</span>
-                            </label>
-                            <div class="file-upload">
-                                <input type="file" class="file-upload-input" id="arquivo" name="arquivo" accept=".pdf,.doc,.docx" required>
-                                <label for="arquivo" class="file-upload-label">
-                                    <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
-                                    <span>Clique para selecionar o arquivo ou arraste aqui</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button type="submit" class="btn-primary">
-                            <i class="fas fa-save"></i>
-                            Cadastrar Manual
-                        </button>
-                        <button type="reset" class="btn-secondary">
-                            <i class="fas fa-undo"></i>
-                            Limpar Formulário
-                        </button>
-                    </div>
-                </form>
+    <!-- SEÇÃO HERO CADASTRAR -->
+    <section class="hero-cadastrar">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-icon-container">
+                    <i class="fas fa-plus-circle hero-main-icon"></i>
+                </div>
+                <h1>Cadastrar Documento</h1>
+                <p class="subtitle">Sistema de Cadastramento de Manuais e Documentações</p>
+                <p class="description">
+                    Adicione novos manuais técnicos, especificações e documentações ao sistema WegOne. 
+                    Preencha os campos abaixo com as informações precisas do documento.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DE PRÉVIA DOS BENEFÍCIOS -->
-    <section class="preview-section">
-        <div class="preview-container">
-            <div class="preview-header">
-                <h2>Por que Cadastrar no WegOne?</h2>
-                <p>Vantagens de ter seus manuais organizados em nossa plataforma</p>
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Informações do Documento</h2>
+                <p>Preencha todos os campos obrigatórios marcados com *</p>
             </div>
-            
-            <div class="preview-cards">
-                <div class="preview-card">
-                    <div class="preview-icon">
-                        <i class="fas fa-search"></i>
+
+            <form class="cadastro-form" id="cadastroForm">
+                <!-- Informações Básicas -->
+                <div class="form-group-section">
+                    <h3><i class="fas fa-info-circle"></i> Informações Básicas</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="titulo">Título do Documento *</label>
+                            <input type="text" id="titulo" name="titulo" required 
+                                   placeholder="Ex: Manual do Inversor CFFW300">
+                            <span class="form-error" id="titulo-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="codigo">Código do Produto *</label>
+                            <input type="text" id="codigo" name="codigo" required 
+                                   placeholder="Ex: CFFW300-15kW">
+                            <span class="form-error" id="codigo-error"></span>
+                        </div>
                     </div>
-                    <h3>Busca Inteligente</h3>
-                    <p>Encontre rapidamente qualquer manual através de busca por código, produto ou palavra-chave</p>
-                </div>
-                
-                <div class="preview-card">
-                    <div class="preview-icon">
-                        <i class="fas fa-globe"></i>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categoria">Categoria *</label>
+                            <select id="categoria" name="categoria" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="inversores">Inversores de Frequência</option>
+                                <option value="motores">Motores Elétricos</option>
+                                <option value="transformadores">Transformadores</option>
+                                <option value="geradores">Grupos Geradores</option>
+                                <option value="automacao">Automação Industrial</option>
+                                <option value="tintas">Tintas e Vernizes</option>
+                                <option value="energia-renovavel">Energia Renovável</option>
+                                <option value="mobilidade">Mobilidade Elétrica</option>
+                            </select>
+                            <span class="form-error" id="categoria-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="versao">Versão do Documento</label>
+                            <input type="text" id="versao" name="versao" 
+                                   placeholder="Ex: v2.3 ou Rev. 05">
+                        </div>
                     </div>
-                    <h3>Acesso Global</h3>
-                    <p>Disponível em múltiplos idiomas e acessível de qualquer lugar do mundo</p>
-                </div>
-                
-                <div class="preview-card">
-                    <div class="preview-icon">
-                        <i class="fas fa-shield-alt"></i>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição *</label>
+                        <textarea id="descricao" name="descricao" required rows="4" 
+                                  placeholder="Descreva brevemente o conteúdo e aplicação do documento"></textarea>
+                        <span class="form-error" id="descricao-error"></span>
                     </div>
-                    <h3>Segurança Total</h3>
-                    <p>Seus documentos ficam seguros com backup automático e controle de versão</p>
                 </div>
-                
-                <div class="preview-card">
-                    <div class="preview-icon">
-                        <i class="fas fa-users"></i>
+
+                <!-- Especificações Técnicas -->
+                <div class="form-group-section">
+                    <h3><i class="fas fa-cog"></i> Especificações Técnicas</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="potencia">Potência/Capacidade</label>
+                            <input type="text" id="potencia" name="potencia" 
+                                   placeholder="Ex: 15kW, 500HP, 1000kVA">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tensao">Tensão Nominal</label>
+                            <input type="text" id="tensao" name="tensao" 
+                                   placeholder="Ex: 220V, 380V, 13.8kV">
+                        </div>
                     </div>
-                    <h3>Colaboração</h3>
-                    <p>Facilite o trabalho em equipe com acesso compartilhado e organizado</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="aplicacao">Aplicação Principal</label>
+                            <select id="aplicacao" name="aplicacao">
+                                <option value="">Selecione a aplicação</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="residencial">Residencial</option>
+                                <option value="infraestrutura">Infraestrutura</option>
+                                <option value="mineracao">Mineração</option>
+                                <option value="petroquimica">Petroquímica</option>
+                                <option value="agua-saneamento">Água e Saneamento</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="normas">Normas Aplicáveis</label>
+                            <input type="text" id="normas" name="normas" 
+                                   placeholder="Ex: IEC 61800, NBR 7094">
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+                <!-- Upload de Arquivo -->
+                <div class="form-group-section">
+                    <h3><i class="fas fa-upload"></i> Upload do Documento</h3>
+                    
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <input type="file" id="documento" name="documento" accept=".pdf,.doc,.docx" hidden>
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <p class="upload-text">Clique aqui ou arraste o arquivo</p>
+                            <p class="upload-subtitle">Formatos aceitos: PDF, DOC, DOCX (máx. 50MB)</p>
+                        </div>
+                        <div class="file-preview" id="filePreview" style="display: none;">
+                            <div class="file-info">
+                                <i class="fas fa-file-pdf file-icon"></i>
+                                <div class="file-details">
+                                    <span class="file-name" id="fileName"></span>
+                                    <span class="file-size" id="fileSize"></span>
+                                </div>
+                                <button type="button" class="remove-file" id="removeFile">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="upload-progress">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações Adicionais -->
+                <div class="form-group-section">
+                    <h3><i class="fas fa-tags"></i> Informações Adicionais</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="autor">Autor/Responsável</label>
+                            <input type="text" id="autor" name="autor" 
+                                   placeholder="Nome do autor ou departamento responsável">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dataAtualizacao">Data de Atualização</label>
+                            <input type="date" id="dataAtualizacao" name="dataAtualizacao">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="palavrasChave">Palavras-chave</label>
+                        <input type="text" id="palavrasChave" name="palavrasChave" 
+                               placeholder="Separe as palavras-chave por vírgulas">
+                        <small>Use palavras-chave para facilitar a busca do documento</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" name="observacoes" rows="3" 
+                                  placeholder="Informações adicionais, restrições de uso, etc."></textarea>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="limparForm">
+                        <i class="fas fa-eraser"></i>
+                        Limpar Campos
+                    </button>
+                    <button type="submit" class="btn-primary" id="submitBtn">
+                        <i class="fas fa-save"></i>
+                        Cadastrar Documento
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
+
+    <!-- Modal de Sucesso -->
+    <div class="modal-overlay" id="modalOverlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Documento Cadastrado!</h3>
+            </div>
+            <div class="modal-body">
+                <p>O documento foi cadastrado com sucesso no sistema WegOne.</p>
+                <div class="modal-details">
+                    <p><strong>Título:</strong> <span id="modalTitulo"></span></p>
+                    <p><strong>Código:</strong> <span id="modalCodigo"></span></p>
+                    <p><strong>Categoria:</strong> <span id="modalCategoria"></span></p>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="novoDocumento">
+                    <i class="fas fa-plus"></i>
+                    Cadastrar Novo
+                </button>
+                <button class="btn-primary" id="voltarInicio">
+                    <i class="fas fa-home"></i>
+                    Voltar ao Início
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -228,11 +296,11 @@
                 <div class="footer-section">
                     <h4>Navegação</h4>
                     <ul>
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#search">Pesquisar</a></li>
-                        <li><a href="#register">Cadastrar</a></li>
+                        <li><a href="../Pag Inicial/index.html">Início</a></li>
+                        <li><a href="../Pag Inicial/index.html#search">Pesquisar</a></li>
+                        <li><a href="#">Cadastrar</a></li>
                         <li><a href="#edit">Editar</a></li>
-                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="../Pag Inicial/index.html#about">Sobre</a></li>
                     </ul>
                 </div>
                 
@@ -254,5 +322,263 @@
     </footer>
 
     <script>
-        // Função para lidar com o upload de arquivo
-        const fileInput = document.getElementById('arquivo');
+        // Validação de formulário
+        const form = document.getElementById('cadastroForm');
+        const fileInput = document.getElementById('documento');
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        const filePreview = document.getElementById('filePreview');
+        const submitBtn = document.getElementById('submitBtn');
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        // Upload de arquivo com drag and drop
+        fileUploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.add('drag-over');
+        });
+
+        fileUploadArea.addEventListener('dragleave', () => {
+            fileUploadArea.classList.remove('drag-over');
+        });
+
+        fileUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileSelect(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        function handleFileSelect(file) {
+            // Validar tipo de arquivo
+            const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            if (!allowedTypes.includes(file.type)) {
+                alert('Formato de arquivo não permitido. Use PDF, DOC ou DOCX.');
+                return;
+            }
+
+            // Validar tamanho (50MB)
+            if (file.size > 50 * 1024 * 1024) {
+                alert('Arquivo muito grande. O tamanho máximo é 50MB.');
+                return;
+            }
+
+            // Mostrar preview
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = formatFileSize(file.size);
+            filePreview.style.display = 'block';
+            fileUploadArea.querySelector('.upload-content').style.display = 'none';
+
+            // Simular upload
+            simulateUpload();
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function simulateUpload() {
+            const progressBar = document.getElementById('progressBar');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 20;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                }
+                progressBar.style.width = progress + '%';
+            }, 200);
+        }
+
+        // Remover arquivo
+        document.getElementById('removeFile').addEventListener('click', () => {
+            fileInput.value = '';
+            filePreview.style.display = 'none';
+            fileUploadArea.querySelector('.upload-content').style.display = 'block';
+            document.getElementById('progressBar').style.width = '0%';
+        });
+
+        // Validação em tempo real
+        function validateField(fieldId, errorId, validationFn, errorMessage) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(errorId);
+            
+            field.addEventListener('blur', () => {
+                if (!validationFn(field.value)) {
+                    errorElement.textContent = errorMessage;
+                    field.classList.add('error');
+                } else {
+                    errorElement.textContent = '';
+                    field.classList.remove('error');
+                }
+            });
+
+            field.addEventListener('input', () => {
+                if (field.classList.contains('error') && validationFn(field.value)) {
+                    errorElement.textContent = '';
+                    field.classList.remove('error');
+                }
+            });
+        }
+
+        // Configurar validações
+        validateField('titulo', 'titulo-error', 
+            value => value.trim().length >= 5, 
+            'O título deve ter pelo menos 5 caracteres'
+        );
+
+        validateField('codigo', 'codigo-error', 
+            value => value.trim().length >= 3, 
+            'O código deve ter pelo menos 3 caracteres'
+        );
+
+        validateField('categoria', 'categoria-error', 
+            value => value !== '', 
+            'Selecione uma categoria'
+        );
+
+        validateField('descricao', 'descricao-error', 
+            value => value.trim().length >= 20, 
+            'A descrição deve ter pelo menos 20 caracteres'
+        );
+
+        // Limpar formulário
+        document.getElementById('limparForm').addEventListener('click', () => {
+            if (confirm('Tem certeza que deseja limpar todos os campos?')) {
+                form.reset();
+                document.getElementById('removeFile').click();
+                document.querySelectorAll('.form-error').forEach(error => error.textContent = '');
+                document.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
+            }
+        });
+
+        // Submissão do formulário
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Validar campos obrigatórios
+            const requiredFields = ['titulo', 'codigo', 'categoria', 'descricao'];
+            let hasErrors = false;
+
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                const errorElement = document.getElementById(fieldId + '-error');
+                
+                if (!field.value.trim()) {
+                    errorElement.textContent = 'Este campo é obrigatório';
+                    field.classList.add('error');
+                    hasErrors = true;
+                }
+            });
+
+            if (hasErrors) {
+                alert('Por favor, corrija os erros antes de continuar.');
+                return;
+            }
+
+            // Simular envio
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cadastrando...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                // Preencher modal com dados
+                document.getElementById('modalTitulo').textContent = document.getElementById('titulo').value;
+                document.getElementById('modalCodigo').textContent = document.getElementById('codigo').value;
+                document.getElementById('modalCategoria').textContent = document.getElementById('categoria').options[document.getElementById('categoria').selectedIndex].text;
+
+                // Mostrar modal
+                modalOverlay.style.display = 'flex';
+
+                // Resetar botão
+                submitBtn.innerHTML = '<i class="fas fa-save"></i> Cadastrar Documento';
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Ações do modal
+        document.getElementById('novoDocumento').addEventListener('click', () => {
+            modalOverlay.style.display = 'none';
+            form.reset();
+            document.getElementById('removeFile').click();
+            document.querySelectorAll('.form-error').forEach(error => error.textContent = '');
+            document.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('voltarInicio').addEventListener('click', () => {
+            window.location.href = '../Pag Inicial/index.html';
+        });
+
+        // Fechar modal clicando fora
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.style.display = 'none';
+            }
+        });
+
+        // Efeito de scroll no header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(2, 93, 168, 0.95) 0%, rgba(0, 115, 204, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Smooth scrolling para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada dos elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animação
+        document.querySelectorAll('.form-group-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
