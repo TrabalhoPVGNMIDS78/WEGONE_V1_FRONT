@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WegOne - Meu Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./perfil.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">W</div>
+                <a href="../Pag Inicial/index.html" class="brand-name">WegOne</a>
+            </div>
+            
+            <div class="header-actions">
+                <select class="language-selector" id="language">
+                    <option value="pt">🇧🇷</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="es">🇪🇸</option>
+                    <option value="zh">🇨🇳</option>
+                </select>
+                
+                <div class="profile-menu">
+                    <div class="profile-btn">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../Pag Inicial/index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li class="nav-item"><a href="../Pag Inicial/index.html#search"><i class="fas fa-search"></i> Pesquisar</a></li>
+                <li class="nav-item"><a href="../Pags Extras/cadastrar.html"><i class="fas fa-plus"></i> Cadastrar</a></li>
+                <li class="nav-item"><a href="../Pags Extras/editar.html"><i class="fas fa-edit"></i> Editar</a></li>
+                <li class="nav-item"><a href="../Pags Extras/excluir.html"><i class="fas fa-trash"></i> Excluir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="main-content">
+        <!-- SIDEBAR PERFIL -->
+        <aside class="profile-sidebar">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    JS
+                    <div class="avatar-edit-btn">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                </div>
+                <h2 class="profile-name">João Silva</h2>
+                <p class="profile-role">Engenheiro Técnico</p>
+                <div class="profile-status">
+                    <i class="fas fa-circle"></i>
+                    Online
+                </div>
+            </div>
+
+            <nav>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="menu-link active" data-section="overview">
+                        <i class="fas fa-chart-line"></i> Visão Geral
+                    </a></li>
+                    <li><a href="#" class="menu-link" data-section="personal">
+                        <i class="fas fa-user"></i> Informações Pessoais
+                    </a></li>
+                    <li><a href="#" class="menu-link" data-section="activity">
+                        <i class="fas fa-history"></i> Atividades Recentes
+                    </a></li>
+                    <li><a href="#" class="menu-link" data-section="settings">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a></li>
+                    <li><a href="#" class="menu-link" data-section="preferences">
+                        <i class="fas fa-palette"></i> Preferências
+                    </a></li>
+                    <li><a href="#" class="menu-link" data-section="security">
+                        <i class="fas fa-shield-alt"></i> Segurança
+                    </a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- ÁREA DE CONTEÚDO -->
+        <main class="content-area">
+            <div class="content-header">
+                <h1 class="content-title">Meu Perfil</h1>
+                <p class="content-subtitle">Gerencie suas informações e configurações pessoais</p>
+            </div>
+
+            <div class="content-body">
+                <!-- VISÃO GERAL -->
+                <section class="profile-section active" id="overview">
+                    <div class="section-title">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Visão Geral</span>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-number">127</div>
+                            <div class="stat-label">Documentos Criados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="stat-number">89</div>
+                            <div class="stat-label">Documentos Editados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <div class="stat-number">2.3k</div>
+                            <div class="stat-label">Downloads</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-number">4.8</div>
+                            <div class="stat-label">Avaliação Média</div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom: 20px; color: var(--text-dark);">Atividades Recentes</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon create">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento criado</div>
+                                <div class="activity-description">Manual Técnico - Inversor CFFW500</div>
+                                <div class="activity-time">Há 2 horas</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon edit">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento editado</div>
+                                <div class="activity-description">Especificações - Motor W22 Premium</div>
+                                <div class="activity-time">Há 5 horas</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon create">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento criado</div>
+                                <div class="activity-description">Guia de Instalação - Transformador 15kVA</div>
+                                <div class="activity-time">Ontem</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- INFORMAÇÕES PESSOAIS -->
+                <section class="profile-section" id="personal">
+                    <div class="section-title">
+                        <i class="fas fa-user"></i>
+                        <span>Informações Pessoais</span>
+                    </div>
+
+                    <form>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">Nome</label>
+                                <input type="text" id="firstName" value="João">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Sobrenome</label>
+                                <input type="text" id="lastName" value="Silva">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" value="joao.silva@weg.net">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" value="(47) 99999-9999">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Departamento</label>
+                                <select id="department">
+                                    <option value="engenharia">Engenharia</option>
+                                    <option value="vendas">Vendas</option>
+                                    <option value="suporte">Suporte Técnico</option>
+                                    <option value="pesquisa">Pesquisa e Desenvolvimento</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="position">Cargo</label>
+                                <input type="text" id="position" value="Engenheiro Técnico Sênior">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bio">Biografia</label>
+                            <textarea id="bio" placeholder="Conte um pouco sobre você...">Engenheiro especializado em sistemas de automação industrial com mais de 8 anos de experiência na WEG. Focado no desenvolvimento de soluções inovadoras para o setor de energia e automação.</textarea>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-secondary">
+                                <i class="fas fa-times"></i> Cancelar
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- ATIVIDADES RECENTES -->
+                <section class="profile-section" id="activity">
+                    <div class="section-title">
+                        <i class="fas fa-history"></i>
+                        <span>Histórico de Atividades</span>
+                    </div>
+
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon create">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento criado</div>
+                                <div class="activity-description">Manual Técnico - Inversor CFFW500 v2.1</div>
+                                <div class="activity-time">15/07/2025 às 14:30</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon edit">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento editado</div>
+                                <div class="activity-description">Especificações - Motor W22 Premium - Atualização de especificações técnicas</div>
+                                <div class="activity-time">15/07/2025 às 10:15</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon create">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento criado</div>
+                                <div class="activity-description">Guia de Instalação - Transformador Seco 15kVA</div>
+                                <div class="activity-time">14/07/2025 às 16:45</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon delete">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento excluído</div>
+                                <div class="activity-description">Manual Obsoleto - Inversor CFW100 v1.0 (versão desatualizada)</div>
+                                <div class="activity-time">14/07/2025 às 09:20</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon edit">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Documento editado</div>
+                                <div class="activity-description">Manual de Manutenção - Motor W21 - Correções de procedimentos</div>
+                                <div class="activity-time">13/07/2025 às 14:10</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CONFIGURAÇÕES -->
+                <section class="profile-section" id="settings">
+                    <div class="section-title">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4><i class="fas fa-bell"></i> Notificações</h4>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Notificações por e-mail</div>
+                                <div class="setting-description">Receba notificações sobre atividades importantes</div>
+                            </div>
+                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Notificações de comentários</div>
+                                <div class="setting-description">Seja notificado quando alguém comentar em seus documentos</div>
+                            </div>
+                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Relatórios semanais</div>
+                                <div class="setting-description">Receba um resumo semanal das suas atividades</div>
+                            </div>
+                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4><i class="fas fa-eye"></i> Privacidade</h4>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Perfil público</div>
+                                <div class="setting-description">Permitir que outros usuários vejam seu perfil</div>
+                            </div>
+                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Mostrar atividades</div>
+                                <div class="setting-description">Exibir suas atividades recentes para outros usuários</div>
+                            </div>
+                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4><i class="fas fa-language"></i> Idioma e Região</h4>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="language">Idioma</label>
+                                <select id="language">
+                                    <option value="pt-br">Português (Brasil)</option>
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                    <option value="de">Deutsch</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="timezone">Fuso Horário</label>
+                                <select id="timezone">
+                                    <option value="america/sao_paulo">América/São Paulo (UTC-3)</option>
+                                    <option value="america/new_york">América/Nova York (UTC-4)</option>
+                                    <option value="europe/london">Europa/Londres (UTC+1)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PREFERÊNCIAS -->
+                <section class="profile-section" id="preferences">
+                    <div class="section-title">
+                        <i class="fas fa-palette"></i>
+                        <span>Preferências de Interface</span>
+                    </div>
+
+                    <h4 style="margin-bottom: 20px;">Tema da Interface</h4>
+                    <div class="preference-grid">
+                        <div class="preference-card selected">
+                            <div class="preference-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="preference-title">Tema Claro</div>
+                            <div class="preference-description">Interface clara e moderna</div>
+                        </div>
+                        <div class="preference-card">
+                            <div class="preference-icon">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div class="preference-title">Tema Escuro</div>
+                            <div class="preference-description">Ideal para ambientes com pouca luz</div>
+                        </div>
+                        <div class="preference-card">
+                            <div class="preference-icon">
+                                <i class="fas fa-adjust"></i>
+                            </div>
+                            <div class="preference-title">Automático</div>
+                            <div class="preference-description">Segue as configurações do sistema</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 30px 0 20px;">Densidade da Interface</h4>
+                    <div class="preference-grid">
+                        <div class="preference-card">
+                            <div class="preference-icon">
+                                <i class="fas fa-compress-alt"></i>
+                            </div>
+                            <div class="preference-title">Compacta</div>
+                            <div class="preference-description">Mais informações em menos espaço</div>
+                        </div>
+                        <div class="preference-card selected">
+                            <div class="preference-icon">
+                                <i class="fas fa-expand-alt"></i>
+                            </div>
+                            <div class="preference-title">Confortável</div>
+                            <div class="preference-description">Espaçamento equilibrado</div>
+                        </div>
+                        <div class="preference-card">
+                            <div class="preference-icon">
+                                <i class="fas fa-arrows-alt"></i>
+                            </div>
+                            <div class="preference-title">Espaçosa</div>
+                            <div class="preference-description">Máximo conforto visual</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SEGURANÇA -->
+                <section class="profile-section" id="security">
+                    <div class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Segurança</span>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4><i class="fas fa-key"></i> Alterar Senha</h4>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="currentPassword">Senha Atual</label>
+                                <input type="password" id="currentPassword" placeholder="Digite sua senha atual">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">Nova Senha</label>
+                                <input type="password" id="newPassword" placeholder="Digite sua nova senha">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirmar Nova Senha</label>
+                                <input type="password" id="confirmPassword" placeholder="Confirme sua nova senha">
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-primary">
+                                <i class="fas fa-key"></i> Alterar Senha
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4><i class="fas fa-mobile-alt"></i> Autenticação de Dois Fatores</h4>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-title">Autenticação de dois fatores</div>
+                                <div class="setting-description">Adicione uma camada extra de segurança à sua conta</div>
+                            </div>
+                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-secondary">
+                                <i class="fas fa-qrcode"></i> Configurar Autenticador
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4><i class="fas fa-history"></i> Sessões Ativas</h4>
+                        
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background: var(--success-green);">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Windows - Chrome</div>
+                                    <div class="activity-description">IP: 192.168.1.100 - Jaraguá do Sul, SC</div>
+                                    <div class="activity-time">Sessão atual - Ativa</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background: var(--primary-blue);">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Android - Chrome Mobile</div>
+                                    <div class="activity-description">IP: 192.168.1.50 - Jaraguá do Sul, SC</div>
+                                    <div class="activity-time">Última atividade: há 2 horas</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-danger">
+                                <i class="fas fa-sign-out-alt"></i> Encerrar Todas as Sessões
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4><i class="fas fa-download"></i> Dados da Conta</h4>
+                        
+                        <p style="color: var(--text-light); margin-bottom: 20px;">
+                            Baixe uma cópia dos seus dados ou solicite a exclusão permanente da sua conta.
+                        </p>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn-secondary">
+                                <i class="fas fa-download"></i> Baixar Meus Dados
+                            </button>
+                            <button type="button" class="btn-danger">
+                                <i class="fas fa-user-times"></i> Excluir Conta
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Navegação entre seções
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuLinks = document.querySelectorAll('.menu-link');
+            const sections = document.querySelectorAll('.profile-section');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const sectionId = this.getAttribute('data-section');
+                    const targetSection = document.getElementById(sectionId);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Toggle switches
+        function toggleSwitch(element) {
+            element.classList.toggle('active');
+        }
+
+        // Preference cards selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const preferenceCards = document.querySelectorAll('.preference-card');
+            
+            preferenceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove selected class from siblings
+                    const siblings = this.parentNode.querySelectorAll('.preference-card');
+                    siblings.forEach(sibling => sibling.classList.remove('selected'));
+                    
+                    // Add selected class to clicked card
+                    this.classList.add('selected');
+                });
+            });
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate form submission
+                const submitBtn = this.querySelector('.btn-primary');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Salvando...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    alert('Informações salvas com sucesso!');
+                }, 2000);
+            });
+        });
+
+        // Avatar edit functionality
+        document.querySelector('.avatar-edit-btn').addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // Simulate image upload
+                    alert('Funcionalidade de upload de avatar seria implementada aqui');
+                }
+            };
+            input.click();
+        });
+
+        // Dangerous actions confirmations
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn-danger')) {
+                const actionText = e.target.textContent.trim();
+                if (actionText.includes('Excluir') || actionText.includes('Encerrar')) {
+                    if (!confirm(`Tem certeza que deseja executar esta ação: "${actionText}"?`)) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(2, 93, 168, 0.95) 0%, rgba(0, 115, 204, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Password strength indicator (basic implementation)
+        document.getElementById('newPassword')?.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+            
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            // You could add a visual indicator here
+            console.log('Password strength:', strength);
+        });
+
+        // Auto-save functionality simulation
+        let autoSaveTimeout;
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('input', function() {
+                clearTimeout(autoSaveTimeout);
+                autoSaveTimeout = setTimeout(() => {
+                    // Auto-save functionality would go here
+                    console.log('Auto-saving...');
+                }, 3000);
+            });
+        });
+
+        // Search functionality for settings (if needed)
+        function searchSettings(query) {
+            const settingsItems = document.querySelectorAll('.setting-item, .preference-card');
+            const lowerQuery = query.toLowerCase();
+            
+            settingsItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(lowerQuery)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + S to save
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                const activeSection = document.querySelector('.profile-section.active');
+                const form = activeSection?.querySelector('form');
+                if (form) {
+                    form.dispatchEvent(new Event('submit'));
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WegOne - Excluir Documentos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./excluir.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">W</div>
+                <a href="../Pag Inicial/index.html" class="brand-name">WegOne</a>
+            </div>
+            
+            <div class="header-actions">
+                <select class="language-selector" id="language">
+                    <option value="pt">🇧🇷</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="es">🇪🇸</option>
+                    <option value="zh">🇨🇳</option>
+                </select>
+                
+                <div class="profile-menu">
+                    <div class="profile-btn">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../Pag Inicial/index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li class="nav-item"><a href="../Pag Inicial/index.html#search"><i class="fas fa-search"></i> Pesquisar</a></li>
+                <li class="nav-item"><a href="../Pags Extras/cadastrar.html"><i class="fas fa-plus"></i> Cadastrar</a></li>
+                <li class="nav-item"><a href="../Pags Extras/editar.html"><i class="fas fa-edit"></i> Editar</a></li>
+                <li class="nav-item active"><a href="#"><i class="fas fa-trash"></i> Excluir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SEÇÃO HERO EXCLUIR -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Excluir Documentos</h1>
+                <p class="subtitle">Gerenciamento de Remoção de Documentações</p>
+                <p class="description">
+                    Remova documentos obsoletos ou incorretos do sistema WegOne de forma segura. 
+                    Esta ação é irreversível e deve ser realizada com cuidado.
+                </p>
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Atenção:</strong> A exclusão de documentos é permanente e não pode ser desfeita.
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-graphic">
+                    <i class="fas fa-trash-alt hero-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUSCA PARA EXCLUSÃO -->
+    <section class="search-section">
+        <div class="search-container">
+            <h2 class="search-title">Buscar Documentos para Excluir</h2>
+            <p class="search-subtitle">Encontre e selecione os documentos que deseja remover</p>
+            
+            <div class="search-box">
+                <input type="text" 
+                       class="search-input" 
+                       id="deleteSearchInput"
+                       placeholder="Digite o nome do documento, código ou modelo..."
+                       oninput="handleDeleteSearch()">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="category">Categoria:</label>
+                    <select id="category" class="filter-select">
+                        <option value="">Todas as categorias</option>
+                        <option value="motores">Motores</option>
+                        <option value="inversores">Inversores</option>
+                        <option value="transformadores">Transformadores</option>
+                        <option value="automacao">Automação</option>
+                        <option value="geradores">Geradores</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="dateRange">Data de Criação:</label>
+                    <select id="dateRange" class="filter-select">
+                        <option value="">Qualquer data</option>
+                        <option value="today">Hoje</option>
+                        <option value="week">Esta semana</option>
+                        <option value="month">Este mês</option>
+                        <option value="year">Este ano</option>
+                        <option value="older">Mais antigo</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- AÇÕES EM LOTE -->
+            <div class="batch-actions" id="batchActions">
+                <div class="batch-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span id="selectedCount">0 documentos selecionados</span>
+                </div>
+                <div class="batch-buttons">
+                    <button class="btn-secondary" onclick="deselectAll()">
+                        <i class="fas fa-times"></i> Desmarcar Todos
+                    </button>
+                    <button class="btn-danger" onclick="deleteSelected()">
+                        <i class="fas fa-trash"></i> Excluir Selecionados
+                    </button>
+                </div>
+            </div>
+            
+            <div class="search-results active" id="deleteSearchResults">
+                <div class="result-item">
+                    <div class="result-checkbox">
+                        <input type="checkbox" id="doc1" onchange="updateSelection()">
+                    </div>
+                    <div class="result-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="result-content">
+                        <strong>Manual Obsoleto - Inversor CFW100 v1.0</strong>
+                        <p>Criado em: 15/01/2020 - Status: Obsoleto</p>
+                        <div class="result-meta">
+                            <span class="meta-tag">Manual Técnico</span>
+                            <span class="meta-tag">Obsoleto</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="action-btn delete-btn" onclick="deleteSingle('cfw100-v1')">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                        <button class="action-btn preview-btn" onclick="previewDocument('cfw100-v1')">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-checkbox">
+                        <input type="checkbox" id="doc2" onchange="updateSelection()">
+                    </div>
+                    <div class="result-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="result-content">
+                        <strong>Especificação Duplicada - Motor W20 Premium</strong>
+                        <p>Criado em: 22/03/2021 - Status: Duplicado</p>
+                        <div class="result-meta">
+                            <span class="meta-tag">Especificação</span>
+                            <span class="meta-tag">Duplicado</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="action-btn delete-btn" onclick="deleteSingle('w20-dup')">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                        <button class="action-btn preview-btn" onclick="previewDocument('w20-dup')">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-checkbox">
+                        <input type="checkbox" id="doc3" onchange="updateSelection()">
+                    </div>
+                    <div class="result-icon"><i class="fas fa-file-word"></i></div>
+                    <div class="result-content">
+                        <strong>Rascunho Não Finalizado - Transformador 500kVA</strong>
+                        <p>Criado em: 10/12/2023 - Status: Rascunho</p>
+                        <div class="result-meta">
+                            <span class="meta-tag">Rascunho</span>
+                            <span class="meta-tag">Não Finalizado</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="action-btn delete-btn" onclick="deleteSingle('transf-draft')">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                        <button class="action-btn preview-btn" onclick="previewDocument('transf-draft')">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-checkbox">
+                        <input type="checkbox" id="doc4" onchange="updateSelection()">
+                    </div>
+                    <div class="result-icon"><i class="fas fa-file-image"></i></div>
+                    <div class="result-content">
+                        <strong>Arquivo Corrompido - Diagrama Elétrico Painel X1</strong>
+                        <p>Criado em: 05/08/2022 - Status: Corrompido</p>
+                        <div class="result-meta">
+                            <span class="meta-tag">Diagrama</span>
+                            <span class="meta-tag">Corrompido</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="action-btn delete-btn" onclick="deleteSingle('painel-x1-corrupt')">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                        <button class="action-btn preview-btn" onclick="previewDocument('painel-x1-corrupt')">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Confirmar Exclusão</h3>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir os documentos selecionados?</p>
+                <p><strong>Esta ação não pode ser desfeita!</strong></p>
+                <div class="modal-details" id="modalDetails">
+                    <!-- Detalhes dos documentos serão inseridos aqui -->
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </button>
+                <button class="btn-danger" id="confirmDeleteBtn">
+                    <i class="fas fa-trash"></i>
+                    Confirmar Exclusão
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>WegOne</h3>
+                    <p>
+                        Sistema oficial de consulta e gerenciamento de manuais técnicos e pesquisas da WEG. 
+                        Conectando tecnologia e inovação para um futuro mais eficiente.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com" target="_blank" rel="external" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="external" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com" target="_blank" rel="external" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://br.linkedin.com" target="_blank" rel="external" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" rel="external" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../Pag Inicial/index.html">Início</a></li>
+                        <li><a href="../Pag Inicial/index.html#search">Pesquisar</a></li>
+                        <li><a href="../Pags Extras/cadastrar.html">Cadastrar</a></li>
+                        <li><a href="../Pags Extras/editar.html">Editar</a></li>
+                        <li><a href="#">Excluir</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@wegone.com">contato@wegone.com</a></li>
+                        <li><a href="tel:+5547900000000">(47) 90000-0000</a></li>
+                        <li><a href="#">Suporte Técnico</a></li>
+                        <li><a href="#">Central de Ajuda</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WegOne - Sistema de Orientações. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedDocuments = new Set();
+
+        // Função de busca para exclusão
+        function handleDeleteSearch() {
+            const searchInput = document.getElementById('deleteSearchInput');
+            const searchResults = document.getElementById('deleteSearchResults');
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query.length > 0) {
+                // Simulação de filtro em tempo real
+                const resultItems = searchResults.querySelectorAll('.result-item');
+                resultItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        item.style.display = 'flex';
+                        item.style.animation = 'slideInUp 0.3s ease';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            } else {
+                const resultItems = searchResults.querySelectorAll('.result-item');
+                resultItems.forEach(item => {
+                    item.style.display = 'flex';
+                });
+            }
+        }
+
+        // Atualizar seleção
+        function updateSelection() {
+            const checkboxes = document.querySelectorAll('.result-checkbox input[type="checkbox"]');
+            const batchActions = document.getElementById('batchActions');
+            const selectedCount = document.getElementById('selectedCount');
+            
+            selectedDocuments.clear();
+            let count = 0;
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedDocuments.add(checkbox.id);
+                    checkbox.closest('.result-item').classList.add('selected');
+                    count++;
+                } else {
+                    checkbox.closest('.result-item').classList.remove('selected');
+                }
+            });
+            
+            selectedCount.textContent = `${count} documento${count !== 1 ? 's' : ''} selecionado${count !== 1 ? 's' : ''}`;
+            
+            if (count > 0) {
+                batchActions.classList.add('active');
+            } else {
+                batchActions.classList.remove('active');
+            }
+        }
+
+        // Desmarcar todos
+        function deselectAll() {
+            const checkboxes = document.querySelectorAll('.result-checkbox input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            updateSelection();
+        }
+
+        // Excluir documentos selecionados
+        function deleteSelected() {
+            if (selectedDocuments.size === 0) {
+                alert('Nenhum documento selecionado.');
+                return;
+            }
+            
+            showDeleteModal(Array.from(selectedDocuments));
+        }
+
+        // Excluir documento individual
+        function deleteSingle(documentId) {
+            showDeleteModal([documentId]);
+        }
+
+        // Mostrar modal de confirmação
+        function showDeleteModal(documentIds) {
+            const modal = document.getElementById('modalOverlay');
+            const modalDetails = document.getElementById('modalDetails');
+            const confirmBtn = document.getElementById('confirmDeleteBtn');
+            
+            // Simular nomes dos documentos
+            const documentNames = {
+                'cfw100-v1': 'Manual Obsoleto - Inversor CFW100 v1.0',
+                'w20-dup': 'Especificação Duplicada - Motor W20 Premium',
+                'transf-draft': 'Rascunho Não Finalizado - Transformador 500kVA',
+                'painel-x1-corrupt': 'Arquivo Corrompido - Diagrama Elétrico Painel X1',
+                'doc1': 'Manual Obsoleto - Inversor CFW100 v1.0',
+                'doc2': 'Especificação Duplicada - Motor W20 Premium',
+                'doc3': 'Rascunho Não Finalizado - Transformador 500kVA',
+                'doc4': 'Arquivo Corrompido - Diagrama Elétrico Painel X1'
+            };
+            
+            // Preencher detalhes
+            modalDetails.innerHTML = '';
+            documentIds.forEach(id => {
+                const p = document.createElement('p');
+                p.innerHTML = `<strong>•</strong> ${documentNames[id] || 'Documento não encontrado'}`;
+                modalDetails.appendChild(p);
+            });
+            
+            // Configurar botão de confirmação
+            confirmBtn.onclick = () => {
+                performDelete(documentIds);
+            };
+            
+            modal.style.display = 'flex';
+        }
+
+        // Executar exclusão
+        function performDelete(documentIds) {
+            const confirmBtn = document.getElementById('confirmDeleteBtn');
+            
+            // Simular processo de exclusão
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Excluindo...';
+            confirmBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Remover itens da interface
+                documentIds.forEach(id => {
+                    const checkbox = document.getElementById(id);
+                    if (checkbox) {
+                        const resultItem = checkbox.closest('.result-item');
+                        if (resultItem) {
+                            resultItem.style.animation = 'slideOut 0.3s ease';
+                            setTimeout(() => {
+                                resultItem.remove();
+                            }, 300);
+                        }
+                    }
+                });
+                
+                // Limpar seleção
+                selectedDocuments.clear();
+                updateSelection();
+                
+                // Fechar modal
+                closeModal();
+                
+                // Mostrar confirmação
+                alert(`${documentIds.length} documento${documentIds.length !== 1 ? 's' : ''} excluído${documentIds.length !== 1 ? 's' : ''} com sucesso!`);
+                
+                // Resetar botão
+                confirmBtn.innerHTML = '<i class="fas fa-trash"></i> Confirmar Exclusão';
+                confirmBtn.disabled = false;
+            }, 2000);
+        }
+
+        // Visualizar documento
+        function previewDocument(documentId) {
+            console.log('Visualizando documento:', documentId);
+            alert(`Abrindo visualização do documento: ${documentId}`);
+        }
+
+        // Fechar modal
+        function closeModal() {
+            const modal = document.getElementById('modalOverlay');
+            modal.style.display = 'none';
+        }
+
+        // Fechar modal clicando fora
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'modalOverlay') {
+                closeModal();
+            }
+        });
+
+        // Filtros de pesquisa
+        document.addEventListener('DOMContentLoaded', function() {
+            const filters = document.querySelectorAll('.filter-select');
+            filters.forEach(filter => {
+                filter.addEventListener('change', function() {
+                    console.log('Filtro alterado:', this.id, this.value);
+                    // Aqui seria implementada a lógica de filtro
+                });
+            });
+        });
+
+        // Efeito de scroll no header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(2, 93, 168, 0.95) 0%, rgba(0, 115, 204, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Animação de saída para elementos removidos
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideOut {
+                from {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(-100%);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
+                    <label for="documentType">Tipo de Documento:</label>
+                    <select id="documentType" class="filter-select">
+                        <option value="">Todos os tipos</option>
+                        <option value="manual">Manual Técnico</option>
+                        <option value="especificacao">Especificação</option>
+                        <option value="guia">Guia de Instalação</option>
+                        <option value="manutencao">Manual de Manutenção</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
